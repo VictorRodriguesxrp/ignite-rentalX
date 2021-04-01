@@ -1,10 +1,10 @@
 import { Router } from "express";
 import multer from "multer";
 
-import uploadConfig from "../config/upload";
+import uploadConfig from "../../../../config/upload";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import { CreateUserController } from "../modules/accounts/useCases/CreateUser/CreateUserController";
-import { UpdateUserAvatarControler } from "../modules/accounts/useCases/updatedUserAvatar/UpdateUserAvatarController";
+import { CreateUserController } from "../../../../modules/accounts/useCases/CreateUser/CreateUserController";
+import { UpdateUserAvatarControler } from "../../../../modules/accounts/useCases/updatedUserAvatar/UpdateUserAvatarController";
 
 const usersRoutes = Router();
 
