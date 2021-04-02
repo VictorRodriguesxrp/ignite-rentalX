@@ -1,5 +1,3 @@
-import { Timestamp } from "typeorm";
-
 export class AppError {
   public readonly message: string;
 
