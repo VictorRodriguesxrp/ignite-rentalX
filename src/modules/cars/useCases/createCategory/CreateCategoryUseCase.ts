@@ -20,7 +20,6 @@ class CreateCategoryUseCase {
     );
 
     if (categoryAlreadyExists) {
-      console.log("caiu no erro categoryAlreadyExists");
       throw new AppError("Category already exists!", 400);
     }
 
