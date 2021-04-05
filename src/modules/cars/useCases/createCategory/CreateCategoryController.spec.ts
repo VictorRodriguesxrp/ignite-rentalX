@@ -6,8 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { app } from "@shared/infra/http/app";
 import { connection } from "@shared/infra/typeorm";
 
+let database: Connection;
+
 describe("Create category controller", async () => {
-  let database: Connection;
   beforeAll(async () => {
     database = await connection();
 
