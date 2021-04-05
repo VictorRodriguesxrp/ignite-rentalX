@@ -4,20 +4,19 @@ import { Connection } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
 import { app } from "@shared/infra/http/app";
-import createConnection from "@shared/infra/typeorm";
-
-let connection: Connection;
+import { connection } from "@shared/infra/typeorm";
 
 describe("Create category controller", async () => {
+  let database: Connection;
   beforeAll(async () => {
-    connection = await createConnection();
+    database = await connection();
 
-    await connection.runMigrations();
+    await database.runMigrations();
 
     const id = uuidv4();
     const password = await hash("admin", 8);
 
-    await connection.query(
+    await database.query(
       `INSERT INTO users (id, name, email, password, "isAdmin", created_at, driver_license)
        VALUES ('${id}', 'admin', 'admin@rentx.com.br', '${password}', true, 'now()', 'XXXXX')
       `
@@ -25,8 +24,8 @@ describe("Create category controller", async () => {
   });
 
   afterAll(async () => {
-    await connection.dropDatabase();
-    await connection.close;
+    // await database.dropDatabase();
+    await database.close;
   });
 
   it("should be able to create a new category", async () => {
