@@ -1,7 +1,7 @@
-import { connection } from "@shared/infra/typeorm";
+import createConnection from "@shared/infra/typeorm";
 
 import { app } from "./app";
 
-connection();
+createConnection();
 
 app.listen(3333, () => console.log("Server is running!"));

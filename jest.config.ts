@@ -8,6 +8,7 @@ export default {
 
   // Stop running tests after `n` failures
   bail: true,
+  testTimeout: 30000,
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\victo\\AppData\\Local\\Temp\\jest",
