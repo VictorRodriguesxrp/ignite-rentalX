@@ -18,7 +18,7 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   // :void é para determinar que uma função vai retornar vazio
-  async create({ description, name }: ICreateCategoryDTO): Promise<void> {
+  async create({ description, name }: ICreateCategoryDTO): Promise<Category> {
     // cria a entidade para posteriormente salvar, se não criar antes o typeorm não salva
     const category = this.repository.create({
       description,
@@ -26,6 +26,8 @@ class CategoriesRepository implements ICategoriesRepository {
     });
 
     await this.repository.save(category);
+
+    return category;
   }
 
   async list(): Promise<Category[]> {
